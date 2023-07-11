@@ -2,7 +2,7 @@ export const obtenerCliente = async () => {
 
   let info = [];
   //hacemos la peticion http
-  await fetch('http://35.170.156.191:9000/Cliente')
+  await fetch('http://localhost:9000/Cliente')
   .then(response => response.json())
   .then(data => {
     info = data;

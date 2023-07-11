@@ -1,5 +1,5 @@
 export function agregarCliente(data){
-    fetch('http://35.170.156.191:9000/Cliente', {
+    fetch('http://localhost:9000/Cliente', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

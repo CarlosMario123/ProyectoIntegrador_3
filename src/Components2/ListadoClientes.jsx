@@ -1,17 +1,40 @@
 import { Cliente } from "./Cliente";
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import { obtenerCliente } from "./ObtenerClientes";
 
-export function BuscarCliente({ clientes, setClientes }) {
+export function BuscarCliente({ setClientes }) {
+
+
+  const  [clientesL,setclientesL] = useState([]);
   const [clienteB, setclienteB] = useState([]);
   const [presionado, setpresionado] = useState(0);
-  const buscar = () => {
-    console.log(clientes);
+
+  useEffect(() => {
+    const obtenerClientes = async () => {
+      try {
+        const data = await obtenerCliente();
+        console.log(data);
+        setclientesL(data);
+        console.log(clientesL);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+  
+    obtenerClientes();
+  },[]);
+  const buscar = async () => {
+    setpresionado(0);
+    let datos = await obtenerCliente();
+    
+   setclientesL(datos);
+    console.log(clienteB);
     setpresionado(1);
     let nombre = document.getElementById("buscador").value;
     let clientesFiltrados = "";
     if (nombre.length > 0) {
       console.log("entre");
-      clientesFiltrados = clientes.filter((cliente) => {
+      clientesFiltrados = clientesL.filter((cliente) => {
         const nombreCliente = cliente.nombreCliente
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
@@ -31,8 +54,8 @@ export function BuscarCliente({ clientes, setClientes }) {
   const eliminarC = (id) => {
     setpresionado(0)
     setclienteB([]);
-    const filtrarClientes = clientes.filter(cliente => cliente.id != id);
-    const url = `http://35.170.156.191:9000/Cliente/${id}`; // URL del endpoint para eliminar el cliente con ID 1
+    const filtrarClientes = clientesL.filter(cliente => cliente.id != id);
+    const url = `http://localhost:9000/Cliente/${id}`; // URL del endpoint para eliminar el cliente con ID 1
     setClientes(filtrarClientes);
     fetch(url, {
       method: "DELETE",

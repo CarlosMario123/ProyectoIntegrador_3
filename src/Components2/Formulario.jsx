@@ -35,7 +35,7 @@ import { agregarCliente } from "../js/Agregar";
             Nombre_Tienda:nombreTienda,
         }
      console.log(objetoCliente);
-     agregarCliente(objetoCliente);
+        agregarCliente(objetoCliente);
         setClientes([...clientes, objetoCliente]);
 
         setNombreTienda('')
