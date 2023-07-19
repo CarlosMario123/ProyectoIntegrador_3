@@ -8,9 +8,9 @@ export function SubTitulo(Props){
 }
 
 
-export function Contar(){
+export function Contar({setcantidad}){
     const[value,modificarContar] = useState(0);
-
+    setcantidad(value);
     const quitar = () =>{
          modificarContar((value)=>{
              if(value === 0){

@@ -41,12 +41,8 @@ export const Cliente = ({ cliente, setCliente, eliminarCliente }) => {
             </span>
         </p>
 
-        <div className="flex justify-between mt-10">
-          <button
-            type="button"
-            className="px-10 py-2 font-bold text-white uppercase bg-indigo-600 rounded-lg hover:bg-indigo-700"
-            onClick = { () =>setCliente(cliente) } 
-          >Editar</button>
+        <div className="flex justify-center mt-10">
+          
 
           <button
             type="button"

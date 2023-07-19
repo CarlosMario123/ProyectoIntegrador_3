@@ -6,7 +6,7 @@ import { useEffect,useState } from "react";
 import { kgToText } from "../js/convertidor";
 export function Inventario(){
   return <><div className="flex flex-col items-center p-5 pt-4 mb-20 slide-down">
-  <Titulo name = "inventario"/>
+  <Titulo name = "Inventario"/>
   <ContainerForms/>
   </div>;
   <Nave/>
@@ -47,8 +47,6 @@ function ContainerForms(){
 
          <Formulario key ={producto.id_Producto} titulo={producto.Presentacion} cantidad = {kgToText(producto.Kilos) + " Kg"} unidad = {producto.Cantidad_Disponible + " unidades"}/>
         ))}
-     <Formulario titulo = "tradicional" cantidad = "1kg" unidad = "50"/>
-     <Formulario titulo = "botanero" cantidad = "1kg" unidad = "35"/>
-     <Formulario titulo = "tradicional" cantidad = "2kg" unidad = "25"/>
+    
   </div>
 }

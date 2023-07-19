@@ -26,3 +26,5 @@ root.render(
     <Rutas/>
   </>
 );
+
+serviceWorkerRegistration.register();

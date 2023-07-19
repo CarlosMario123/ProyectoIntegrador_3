@@ -1,3 +1,4 @@
+import axios from "axios";
 export function agregarCliente(data){
     fetch('http://localhost:9000/Cliente', {
         method: 'POST',
@@ -16,3 +17,22 @@ export function agregarCliente(data){
           console.error(error);
         });
 }
+
+
+export  function agregarProducto(producto){
+ console.log(producto)
+
+  axios.post('http://localhost:9000/Producto', producto)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+
+}
+
+
+
+
+ 

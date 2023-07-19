@@ -2,7 +2,7 @@ export const dataStadistic = async () => {
     let fecha = new Date();
     let info = [];
     //hacemos la peticion http
-    await fetch(`http://localhost:9000/Venta/Productos/${fecha.getFullYear()}/${fecha.getMonth()+1}`)
+    await fetch(`http://localhost:9000/Venta/Productos/${fecha.getFullYear()}/${fecha.getMonth()}`)
     .then(response => response.json())
     .then(data => {
       info = data;
