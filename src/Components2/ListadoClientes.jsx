@@ -63,6 +63,7 @@ export function BuscarCliente({ setClientes }) {
       .then((response) => {
         if (response.ok) {
           alert("Cliente eliminado correctamente");
+          window.location.reload();
         } else {
           alert("Error al eliminar el cliente");
         }

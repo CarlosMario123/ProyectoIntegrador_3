@@ -3,14 +3,16 @@ import { Titulo,SubTitulo } from "./Compartido";
 import { Estadistica } from "./Graphics";
 import trofeo from "../imagenes/trofeo.png";
 import { bestSeller } from "../js/bestSeller";
+import { Configuracion } from "../Components2/Configuracion";
 import { useState,useEffect } from "react";
 export function Grafica(){
    return <>
-   <div className="flex flex-col items-center p-5 pt-4 mb-20 slide-down">
+   <div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
     <Titulo name = "Estadisticas de venta"/>
     <Estadistica/>
     <SubTitulo name = "Producto mas vendido del mes"/>
       <CartTop/>
+      <Configuracion/>
    </div>
       <Nave/>
    </> 

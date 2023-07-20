@@ -33,7 +33,7 @@ const valores = Object.values(datos);
                 ],
                 borderColor: "black",
                 borderWidth: 2,
-        
+          
               }
          ]
        }

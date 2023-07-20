@@ -11,7 +11,7 @@ import { agregarVenta } from "../js/realizarVenta";
 import { Modal2 } from "./Modal";
 export function Vender(){
   
-   return   <><div className="flex flex-col items-center p-5 pt-4 mb-20 slide-down">
+   return   <><div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
    <Titulo name = "Vender producto"/>
    <Formulario />
    </div>;
@@ -97,16 +97,17 @@ function Formulario(){
 
 
  
-   return <div className="container flex flex-col items-center py-5 shadow-xl rounded-xl px-9 bg-sky-100">
+   return <div className={`container flex flex-col items-center py-5  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white"}`}>
      <Modal2/>
       <SubTitulo titulo = "No. Cliente"/>
       <SeleccionarCliente setCliente = {setcliente} cliente={cliente}/>
-       <SubTitulo titulo = "Presentacion"/>
+       <SubTitulo titulo = "Tipo"/>
        <SeleccionarPresentacion  presentacion={presentacion} setpresentacion={setpresentacion}/>
-       <SubTitulo titulo = "Cantidad"/>
+       <SubTitulo titulo = "Presentacion"/>
        <SeleccionarCantidad kg = {kg} setkg={setkg}/>
+       <SubTitulo titulo = "Cantidad"/>
        < Contar setcantidad={setcantidad}/>
-       <button className="w-40 py-1 mt-5 text-center text-black bg-sky-300 rounded-xl hover:bg-sky-600 hover:text-white" onClick={realizarVenta}>Vender</button>
+       <button className={`w-40 py-1 mt-5 text-center ${localStorage.getItem("1") != null ? "bg-indigo-600 text-white ":"bg-sky-300 text-black"}  rounded-xl hover:bg-sky-600 hover:text-white`} onClick={realizarVenta}>Vender</button>
        
    </div>
 }

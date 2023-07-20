@@ -7,7 +7,7 @@ import { asignarIdProducto } from "../js/AsignarIdProducto";
 import { Modal1 } from "./Modal";
 
 export function Agregar(){
-     return <><div className="flex flex-col items-center h-screen p-5 pt-4 slide-down">
+     return <><div className={`flex flex-col items-center h-screen p-5 pt-4 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
         <Encabezado name = "Agregar producto"/>
         <Formulario/>
        
@@ -41,20 +41,21 @@ function Formulario(){//molecula
         }
     }
 
-    return <div className="container flex flex-col items-center py-5 shadow-xl rounded-xl px-9 bg-sky-100">
+    return <div className={`container flex flex-col items-center py-5  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white"}`}>
          <Modal1/>
-        <Titulo titulo = "Presentacion"/>
+        <Titulo titulo = "Tipo"/>
         <SeleccionarPresentacion presentacion={presentacion} setpresentacion={setpresentacion}/>
-        <Titulo titulo = "Cantidad"/>
+        <Titulo titulo = "Presentacion"/>
         <SeleccionarCantidad kg = {kg} setkg={setkg}/>
+        <Titulo titulo = "Cantidad"/>
         <Contar setcantidad = {setcantidad}/>
-        <button className="w-40 py-1 mt-5 text-center text-black bg-sky-300 rounded-xl hover:bg-sky-600 hover:text-white" onClick={addTostada}>Agregar</button>
+        <button className="w-40 py-1 mt-5 text-center text-white bg-sky-400 rounded-xl hover:bg-sky-600 hover:text-white" onClick={addTostada}>Agregar</button>
     </div>
 }
 
 
 export function Titulo(Props){//atomo
-    return <p className="text-3xl font-light uppercase text-black">{Props.titulo}</p>;
+    return <p className={`text-3xl font-normal  ${localStorage.getItem("1") != null ? " text-white":"bg-white"}`}>{Props.titulo}</p>;
 }
 
 export function SeleccionarPresentacion({presentacion,setpresentacion}){//atomo

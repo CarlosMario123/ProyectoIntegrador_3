@@ -56,3 +56,12 @@
     animation-timing-function: ease;
 
   }
+
+  .modeblack{
+    background-color: rgb(32, 32, 32);
+  }
+
+  .purpura {
+    background-color: rgb(0, 57, 179);
+     
+  }

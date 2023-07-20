@@ -23,7 +23,30 @@ const [datosg, setdatosg] = useState({
          //informacion de las barras de invertido todo se maneja como objeto
    
     ],
+  
   })
+
+  const options = {
+    scales: {
+      x: {
+        ticks: {
+          color:  (localStorage.getItem("1") != null ? "white":"black"), // Cambia el color de las etiquetas del eje X
+        },
+      },
+      y: {
+        ticks: {
+          color: (localStorage.getItem("1") != null ? "white":"black"), // Cambia el color de las etiquetas del eje Y
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        labels: {
+          color: (localStorage.getItem("1") != null ? "white":"black"), // Cambia el color de las etiquetas de la leyenda
+        },
+      },
+    },
+  };
 
       useEffect(()=>{
           const traerDatos = async()=>{
@@ -39,8 +62,8 @@ const [datosg, setdatosg] = useState({
 
   
     return (
-      <div  className='w-11/12'>
-        <Bar data={datosg} />
+      <div  className='w-11/12 text-white opacity-100'>
+        <Bar data={datosg} options={options} />
       </div>
       
        

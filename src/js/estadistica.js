@@ -12,20 +12,28 @@ export const dataStadistic = async () => {
       // Manejo de errores
       console.error('Error:', error);
     });
-  
-    const Productos = info.map((producto) => ({
+    let Productos = "error"
+    try{
+   Productos = info.map((producto) => ({
 
       Nombre: producto.Nombre,
       Total: producto.Cantidad_Vendida,
    
     }));
-
-    const agrupado = Productos.reduce((acc, elemento) => {
+    }catch{
+        Productos = "error";
+        
+    }
+   let agrupado = "vacio";
+    if(Productos != "error"){
+     agrupado = Productos.reduce((acc, elemento) => {
         const { Nombre, Total } = elemento;
         acc[Nombre] = (acc[Nombre] || 0) + Total;
         return acc;
     }, {});
 
+    }
+    
    console.log(agrupado)
 
     return agrupado;

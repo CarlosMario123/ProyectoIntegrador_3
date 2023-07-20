@@ -15,12 +15,17 @@ console.log(fecha.getMonth())
       console.error('Error:', error);
      
     });
-  
-    const Productos = info.map((producto) => ({
+   let Productos = ["vacio"];
+  try{
+       Productos = info.map((producto) => ({
       id_Producto: producto.id_Producto,
         Nombre:producto.Nombre,
         Total_Vendido: producto.Total_Vendido
     }));
+  }catch{
+       Productos = []
+  }
+   
     console.log("inicio")
    
 

@@ -5,7 +5,7 @@ import { obtenerProducto } from "../js/ObtenerProductos";
 import { useEffect,useState } from "react";
 import { kgToText } from "../js/convertidor";
 export function Inventario(){
-  return <><div className="flex flex-col items-center p-5 pt-4 mb-20 slide-down">
+  return <><div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
   <Titulo name = "Inventario"/>
   <ContainerForms/>
   </div>;
@@ -15,7 +15,7 @@ export function Inventario(){
 
 
 function Formulario(Props){
-  return <div className="container flex flex-col items-center py-5 mb-8 shadow-xl rounded-xl px-9 bg-sky-100">
+  return <div className={`container flex flex-col items-center py-5 mb-8  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black":"bg-white"}`}>
     <SubTitulo titulo = {Props.titulo}/>
     <Informacion name = {Props.cantidad}/>
     <Informacion name = {Props.unidad}/>
@@ -24,7 +24,7 @@ function Formulario(Props){
 
 
 function Informacion(Props){
-  return <p className="w-64 py-2 mt-10 text-2xl text-center bg-white rounded-xl">{Props.name}</p>
+  return <p className={`w-64 py-2 mt-10 text-2xl text-center rounded-xl ${localStorage.getItem("1") != null ? "bg-blue-600 text-white":"bg-white"}`}>{Props.name}</p>
 }
 
 function ContainerForms(){

@@ -3,6 +3,7 @@ import Formulario from "./Formulario";
 import { Nave } from "../components/Navegador";
 import { obtenerCliente } from "./ObtenerClientes";
 import { BuscarCliente } from "./ListadoClientes";
+
 function Clientes() {
 
   const [clientes, setClientes] = useState([]);
@@ -38,6 +39,7 @@ useEffect(() => {
       />
       </div>
     </div>
+  
     <Nave/>
     </>
   );
