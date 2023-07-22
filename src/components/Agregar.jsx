@@ -1,18 +1,42 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { Titulo as Encabezado } from "./Compartido";
 import { Nave } from "./Navegador";
 import { Contar } from "./Compartido";
 import { agregarProducto } from "../js/Agregar";
 import { asignarIdProducto } from "../js/AsignarIdProducto";
 import { Modal1 } from "./Modal";
+import { NavTop } from "./navegadorTop";
+
 
 export function Agregar(){
-     return <><div className={`flex flex-col items-center h-screen p-5 pt-4 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Agregar el evento 'resize' para escuchar cambios en el tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Eliminar el evento cuando el componente se desmonte para evitar pérdidas de memoria
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+     return( <>
+     {((windowWidth >= 630 ) ? <NavTop/>  : <div></div>)}
+     <div className={`w-full flex flex-col items-center h-screen p-5 pt-4 slide-down ${localStorage.getItem("1") != null ? "modeblack":"fondo "} ${window.innerWidth >= 630 ? "absolute top-16 ":""}`}>
         <Encabezado name = "Agregar producto"/>
+       
         <Formulario/>
        
+      
      </div>
-      <Nave/></>
+      { (window.innerWidth < 630 ) ? <Nave/>  : <div></div>}
+      
+      </>
+      )
 }
 
 function Formulario(){//molecula
@@ -24,6 +48,7 @@ function Formulario(){//molecula
   
     //evento click 
     const addTostada = ()=>{
+       alert(window.innerWidth)
         if(kg == 0 || cantidad == 0 || presentacion == ""){
             return
         }else{
@@ -41,11 +66,11 @@ function Formulario(){//molecula
         }
     }
 
-    return <div className={`container flex flex-col items-center py-5  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white"}`}>
+    return <div className={`lg:w-1/3 container flex flex-col items-center py-5 lg:  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white shadow-lg opacity-95 shadow-white"}`}>
          <Modal1/>
         <Titulo titulo = "Tipo"/>
         <SeleccionarPresentacion presentacion={presentacion} setpresentacion={setpresentacion}/>
-        <Titulo titulo = "Presentacion"/>
+        <Titulo titulo = "presentación"/>
         <SeleccionarCantidad kg = {kg} setkg={setkg}/>
         <Titulo titulo = "Cantidad"/>
         <Contar setcantidad = {setcantidad}/>

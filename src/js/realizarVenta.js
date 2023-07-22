@@ -4,10 +4,12 @@ export  function agregarVenta(Venta){
    
      axios.post('http://localhost:9000/Venta', Venta)
      .then(response => {
+      console.log("resouesta")
        console.log(response.data);
      })
      .catch(error => {
        console.error(error);
+       return "";
      });
    
    }

@@ -13,7 +13,7 @@ const [datosg, setdatosg] = useState({
         label: "Cantidad vendida del mes de: ",
         data: [100,130,50],
         backgroundColor: [
-          "#00BFFF",
+          "green",
          
         ],
         borderColor: "black",
@@ -62,7 +62,7 @@ const [datosg, setdatosg] = useState({
 
   
     return (
-      <div  className='w-11/12 text-white opacity-100'>
+      <div  className=' text-white opacity-100 w-1/2'>
         <Bar data={datosg} options={options} />
       </div>
       

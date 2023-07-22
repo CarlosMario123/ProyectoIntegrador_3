@@ -1,6 +1,6 @@
 import { useState } from "react";
 export function Titulo(Props){
-    return  <h1 className={`w-full mb-16 text-4xl font-bold text-center  ${localStorage.getItem("1") != null ? "text-gray-200":"text-black"}`}>{Props.name}</h1>;
+    return  <h1 className={`w-full mb-16 text-4xl font-bold text-center md:mt-10 ${localStorage.getItem("1") != null ? "text-gray-200":"text-white"}`}>{Props.name}</h1>;
 }
 
 export function SubTitulo(Props){

@@ -4,12 +4,30 @@ import { Nave } from "./Navegador";
 import { obtenerProducto } from "../js/ObtenerProductos";
 import { useEffect,useState } from "react";
 import { kgToText } from "../js/convertidor";
+import { NavTop } from "./navegadorTop";
 export function Inventario(){
-  return <><div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Agregar el evento 'resize' para escuchar cambios en el tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Eliminar el evento cuando el componente se desmonte para evitar pérdidas de memoria
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  return <>{((windowWidth >= 630 ) ? <NavTop/>  : <div></div>)}
+  <div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":"fondo"} h-screen overflow-auto`}>
   <Titulo name = "Inventario"/>
   <ContainerForms/>
   </div>;
-  <Nave/>
+  { (window.innerWidth < 630 ) ? <Nave/>  : <div></div>}
   </>; 
 }
 

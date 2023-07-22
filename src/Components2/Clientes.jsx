@@ -3,6 +3,7 @@ import Formulario from "./Formulario";
 import { Nave } from "../components/Navegador";
 import { obtenerCliente } from "./ObtenerClientes";
 import { BuscarCliente } from "./ListadoClientes";
+import { NavTop } from "../components/navegadorTop";
 
 function Clientes() {
 
@@ -27,6 +28,7 @@ useEffect(() => {
 
   return (
     <>
+    {((window.innerWidth >= 630 ) ? <NavTop/>  : <div></div>)}
     <div className="container mx-auto mb-24 slide-down pt-7">
       <div className=" md:flex">
       <Formulario

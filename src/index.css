@@ -65,3 +65,38 @@
     background-color: rgb(0, 57, 179);
      
   }
+
+  .fondo{
+   
+    background: rgb(138,237,246);
+background: linear-gradient(0deg, rgba(138,237,246,1) 0%, rgba(96,162,245,1) 95%);
+  
+
+  }
+
+  .colorNav{
+    background: rgba(96,162,245,1);
+   
+  }
+
+   .color-animacion{
+    animation: myAnim 5s ease 0s infinite normal forwards;
+   }
+  @keyframes colorAnimacion {
+    0% {
+      background: rgb(33,5,218);
+      background: radial-gradient(circle, rgba(33,5,218,0.896796218487395) 0%, rgba(0,255,226,1) 100%);
+    }
+
+    25%{
+      background: rgb(33,5,218);
+      background: radial-gradient(circle, rgba(33,5,218,0.896796218487395) 0%, rgba(0,255,226,1) 83%);
+    }
+  
+    100% {
+      background: rgb(33,5,218);
+background: radial-gradient(circle, rgba(33,5,218,0.896796218487395) 0%, rgba(0,255,226,1) 73%);
+    }
+  }
+ 
+ 

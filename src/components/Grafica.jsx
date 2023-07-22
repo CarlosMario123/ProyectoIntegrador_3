@@ -5,16 +5,36 @@ import trofeo from "../imagenes/trofeo.png";
 import { bestSeller } from "../js/bestSeller";
 import { Configuracion } from "../Components2/Configuracion";
 import { useState,useEffect } from "react";
+import { Ranking } from "./rankin";
+import { NavTop } from "./navegadorTop";
 export function Grafica(){
+
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Agregar el evento 'resize' para escuchar cambios en el tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Eliminar el evento cuando el componente se desmonte para evitar pérdidas de memoria
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+ 
    return <>
-   <div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":""}`}>
+   {((windowWidth >= 630 ) ? <NavTop/>  : <div></div>)}
+   <div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":"fondo"}`}>
     <Titulo name = "Estadisticas de venta"/>
     <Estadistica/>
     <SubTitulo name = "Producto mas vendido del mes"/>
       <CartTop/>
-      <Configuracion/>
+      <Options/>
    </div>
-      <Nave/>
+   { (windowWidth < 630 ) ? <Nave/>  : <div></div>}
    </> 
 }
 
@@ -40,4 +60,11 @@ function CartTop(){
             <img src={trofeo} alt="" />
         </div>
     </div>
+}
+
+function Options(){
+  return(<div className="flex md:flex-row gap-x-10 w-11/12 flex-col">
+     <Ranking/>
+      <Configuracion/>
+  </div>)
 }
