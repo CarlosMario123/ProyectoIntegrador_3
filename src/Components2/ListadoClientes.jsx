@@ -55,7 +55,7 @@ export function BuscarCliente({ setClientes }) {
     setpresionado(0)
     setclienteB([]);
     const filtrarClientes = clientesL.filter(cliente => cliente.id != id);
-    const url = `http://localhost:9000/Cliente/${id}`; // URL del endpoint para eliminar el cliente con ID 1
+    const url = `http://44.217.117.88/Cliente/${id}`; // URL del endpoint para eliminar el cliente con ID 1
     setClientes(filtrarClientes);
     fetch(url, {
       method: "DELETE",
@@ -76,7 +76,7 @@ export function BuscarCliente({ setClientes }) {
   };
 
   return (
-    <div className="flex flex-col items-center w-full px-5 py-10 bg-white rounded-lg shadow-md">
+    <div className="flex flex-col items-center w-11/12 px-5 py-10 bg-white rounded-lg shadow-md">
       <h2 className="mb-5 text-3xl font-black text-center">
         Buscador de cliente
       </h2>

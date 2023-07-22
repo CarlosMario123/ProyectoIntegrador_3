@@ -48,7 +48,7 @@ function Formulario(){//molecula
   
     //evento click 
     const addTostada = ()=>{
-       alert(window.innerWidth)
+   
         if(kg == 0 || cantidad == 0 || presentacion == ""){
             return
         }else{
@@ -91,9 +91,9 @@ export function SeleccionarPresentacion({presentacion,setpresentacion}){//atomo
  
     }
     return <select className="w-64 p-1 my-5 bg-white shadow-xl rounded-xl opacity-90" onChange={selecionarTostada} value={presentacion}>
-        <option value="Tradicional">Tradicional</option>
-        <option value="Botanera">Botanera</option>
-        <option value="Horneada">Horneada</option>
+        <option value="tradicional">Tradicional</option>
+        <option value="botanera">Botanera</option>
+        <option value="horneada">Horneada</option>
 
     </select>
 }

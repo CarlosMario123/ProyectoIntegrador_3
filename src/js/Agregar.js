@@ -22,7 +22,7 @@ export function agregarCliente(data){
 export  function agregarProducto(producto){
  console.log(producto)
 
-  axios.post('http://localhost:9000/Producto', producto)
+  axios.post('http://44.217.117.88/Producto', producto)
   .then(response => {
     console.log(response.data);
   })

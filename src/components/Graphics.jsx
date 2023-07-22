@@ -62,7 +62,7 @@ const [datosg, setdatosg] = useState({
 
   
     return (
-      <div  className=' text-white opacity-100 w-1/2'>
+      <div  className=' text-white opacity-100 w-11/12'>
         <Bar data={datosg} options={options} />
       </div>
       

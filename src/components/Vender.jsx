@@ -11,7 +11,8 @@ import { agregarVenta } from "../js/realizarVenta";
 import { Modal2 } from "./Modal";
 import { PDFDownloadLink } from "@react-pdf/renderer"
 import { Documento1 } from "../generadorPDF/Documento1";
-import { ComprobarExistencia } from "../js/comprobarExistencia";
+import axios from "axios";
+
 import { NavTop } from "./navegadorTop";
 export function Vender(){
 
@@ -47,7 +48,23 @@ function Formulario(){
   const [cliente, setcliente] = useState("");
   const [id, setid] = useState(0);
   let [venta, setventa] = useState(0);
+  const [infoCliente, setinfoCliente] = useState("");
+  
 
+  useEffect(() => {
+    // Aquí se ejecutará la petición GET cada vez que cambie el estado
+    const obtenerDatos = async () => {
+      try {
+        const response = await axios.get(`http://44.217.117.88/Cliente/${cliente}`);
+        setinfoCliente(response.data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    obtenerDatos();
+   
+  }, [cliente]); // Agregamos el estado como dependencia
 
   useEffect(() => {
     const obtenerId_1 = async () => {
@@ -82,11 +99,12 @@ function Formulario(){
           return 0;
         }else{
           const venta = {
+           
             id_Cliente:id,
             Cantidad_Vendida:cantidad,
-            Total_Vendido:cantidad,
             Fecha_entrega:fecha.getFullYear() +"-" + fecha.getMonth() + "-"+fecha.getDate(),
             id_Producto:asignarIdProducto(presentacion,kg),
+     
           }
            console.log(venta)
 
@@ -119,13 +137,27 @@ function Formulario(){
               console.log("entre al error")
            }else{
              //ComprobarExistencia(datos.id_Cliente,datos.Cantidad_Vendida)
+        
+            
+              agregarVenta(datos).then(data=>{
+                setventa(datos);
+                window.location.href = "#modal2"
+              }).catch(error=>{
+                alert(error);
+                setventa(0);
+              })
            
-            agregarVenta(datos)
+            
+          
+            
+             
+           
+            
     
-            setventa(datos);
+         
           
            
-           window.location.href = "#modal2"
+          
            }
            
           
@@ -133,7 +165,7 @@ function Formulario(){
        })
   }
 
-
+ 
  
    return (<div className={`container flex flex-col lg:w-1/3 items-center py-5  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white bg-white shadow-lg opacity-95 shadow-white"}`}>
      <Modal2/>
@@ -147,9 +179,9 @@ function Formulario(){
        < Contar setcantidad={setcantidad}/>
        <button className={`w-40 py-1 mt-5 text-center ${localStorage.getItem("1") != null ? "bg-indigo-600 text-white ":"bg-sky-300 text-black"}  rounded-xl hover:bg-sky-600 hover:text-white`} onClick={realizarVenta}>Vender</button>
       {
-       ( (venta != 0) ? <PDFDownloadLink document={<Documento1 venta={venta}/>} fileName="ticketVenta.pdf" className="mt-5"><button className="w-40 p-1 text-white bg-red-600 rounded-sm">Descargar ticket de compra</button></PDFDownloadLink> : <div></div>)
+       ( (venta != 0) ? <PDFDownloadLink document={<Documento1 venta={venta} info ={infoCliente}/>}  fileName="ticketVenta.pdf" className="mt-5"><button className="w-40 p-1 text-white bg-red-600 rounded-sm">Descargar ticket de compra</button></PDFDownloadLink> : <div></div>)
       } 
-      
+  
       
    </div>)
 }

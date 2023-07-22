@@ -1,9 +1,11 @@
 import { Document, Page, Text, View } from "@react-pdf/renderer";
 import { productoById } from "../js/ProductoById";
-export const Documento1 = ({venta})=>{
-  
-    let producto = productoById(venta.id_Producto);
-   
+
+export const Documento1 = ({venta,info})=>{
+;    
+  let producto = productoById(venta.id_Producto);
+
+
 
    
     const titulo = {
@@ -56,8 +58,8 @@ export const Documento1 = ({venta})=>{
                 </View>
                 <Text style={subtitulo}>Informacion de la compra:</Text>
                 <Text style={titulo}>Informacion del cliente</Text>
-                <Text style={campo}>Nombre Completo: </Text>
-                <Text style = {campo}>Direccion:</Text>
+                <Text style={campo}>Nombre Completo: {info[0].Nombre} </Text>
+                <Text style = {campo}>Nombre de la tienda: {info[0].Nombre_Tienda}</Text>
                 <Text style={titulo}>Informacion del producto</Text>
                 <Text style = {campo}>Presentacion: {producto.presentacion}</Text>
                 <Text style = {campo}>Cantidad adquirida: {venta.Cantidad_Vendida}</Text>

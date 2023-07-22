@@ -8,7 +8,21 @@ import { NavTop } from "../components/navegadorTop";
 function Clientes() {
 
   const [clientes, setClientes] = useState([]);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Agregar el evento 'resize' para escuchar cambios en el tamaño de la ventana
+    window.addEventListener('resize', handleResize);
+
+    // Eliminar el evento cuando el componente se desmonte para evitar pérdidas de memoria
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 useEffect(() => {
   const obtenerClientes = async () => {
     try {
@@ -28,9 +42,9 @@ useEffect(() => {
 
   return (
     <>
-    {((window.innerWidth >= 630 ) ? <NavTop/>  : <div></div>)}
-    <div className="container mx-auto mb-24 slide-down pt-7">
-      <div className=" md:flex">
+    {((windowWidth >= 630 ) ? <NavTop/>  : <div></div>)}
+    <div className={` mx-auto mb-24 slide-down py-20  ${localStorage.getItem("1") != null ? "modeblack":"fondo"} `}>
+      <div className=" items-center flex flex-col justify-center">
       <Formulario
         clientes = { clientes }
         setClientes = { setClientes } 
@@ -42,7 +56,7 @@ useEffect(() => {
       </div>
     </div>
   
-    <Nave/>
+    { (windowWidth < 630 ) ? <Nave/>  : <div></div>}
     </>
   );
 }

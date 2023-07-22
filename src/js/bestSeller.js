@@ -5,7 +5,7 @@ export const bestSeller = async () => {
 console.log(fecha.getMonth())
     let info = [];
     //hacemos la peticion http
-    await fetch(`http://localhost:9000/Venta/${fecha.getMonth()}/${fecha.getFullYear()}`)
+    await fetch(`http://44.217.117.88/Venta/${fecha.getMonth()}/${fecha.getFullYear()}`)
     .then(response => response.json())
     .then(data => {
       info = data;

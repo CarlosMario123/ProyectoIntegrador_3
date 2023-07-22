@@ -24,7 +24,7 @@ export function Configuracion(){
         <h2 className={`mb-5 text-3xl font-black text-center ${localStorage.getItem("1") != null ? "text-white ":"text-black"}`}>
           White/Dark 
         </h2>
-        <input type="checkbox" className="toggle toggle-lg" checked = {isChecked} onChange={handleCheckboxChange} />
+        <input type="checkbox" className="toggle toggle-lg " checked = {isChecked} onChange={handleCheckboxChange} />
         </div>
     )
 }
