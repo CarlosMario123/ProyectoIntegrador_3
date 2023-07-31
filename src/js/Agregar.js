@@ -1,6 +1,6 @@
 import axios from "axios";
 export function agregarCliente(data){
-    fetch('http://localhost:9000/Cliente', {
+    fetch('http://44.217.117.88/Cliente', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

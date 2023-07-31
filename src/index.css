@@ -1,7 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+*:root{
+  background: rgb(138,237,246);
+background: linear-gradient(0deg, rgba(138,237,246,1) 0%, rgba(96,162,245,1) 95%);
+}
 @keyframes bounceOnce {
     0% {
       margin: 2px;

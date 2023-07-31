@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.fad4e4ca.css",
+    "main.js": "/static/js/main.ae2066b3.js",
+    "service-worker.js": "/service-worker.js",
+    "static/media/trofeo.png": "/static/media/trofeo.fea55e4dc621c1bd766a.png",
+    "index.html": "/index.html",
+    "main.fad4e4ca.css.map": "/static/css/main.fad4e4ca.css.map",
+    "main.ae2066b3.js.map": "/static/js/main.ae2066b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fad4e4ca.css",
+    "static/js/main.ae2066b3.js"
+  ]
+}

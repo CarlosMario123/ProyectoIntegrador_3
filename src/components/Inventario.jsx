@@ -33,7 +33,7 @@ export function Inventario(){
 
 
 function Formulario(Props){
-  return <div className={`container flex flex-col items-center py-5 mb-8  w-96 shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black":"bg-white"}`}>
+  return <div className={`container flex flex-col items-center py-5 mb-8 uppercase  w-96 shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black":"bg-white"}`}>
     
    
     <SubTitulo titulo = {Props.titulo + " " + Props.kg} /> 
@@ -67,7 +67,7 @@ function ContainerForms(){
    
      ObtenerProductos();
    }, []);
-  return <div className="w-11/12 flex flex-row  flex-wrap  py-5 shadow-xl rounded-xl  justify-center gap-x-10">
+  return <div className="flex flex-row flex-wrap justify-center w-11/12 py-5 shadow-xl rounded-xl gap-x-10">
      {productos.map((producto) => (
 
          <Formulario key ={producto.id_Producto} titulo={producto.Presentacion} kg = {kgToText(producto.Kilos) + " Kg"} unidad = {producto.Cantidad_Disponible + " unidades"}/>

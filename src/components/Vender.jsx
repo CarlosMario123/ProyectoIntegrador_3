@@ -33,7 +33,7 @@ export function Vender(){
   }, []);
   
    return   <>{((windowWidth >= 630 ) ? <NavTop/>  : <div></div>)}
-   <div className={`flex flex-col items-center p-5 pt-4 mb-20 slide-down ${localStorage.getItem("1") != null ? "modeblack":"fondo"}`}>
+   <div className={`flex flex-col items-center p-5 pt-4 mb-20  overflow-auto slide-down ${localStorage.getItem("1") != null ? "modeblack":"fondo"}`}>
    <Titulo name = "Vender producto"/>
    <Formulario />
    </div>;
@@ -167,7 +167,7 @@ function Formulario(){
 
  
  
-   return (<div className={`container flex flex-col lg:w-1/3 items-center py-5  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white bg-white shadow-lg opacity-95 shadow-white"}`}>
+   return (<div className={`container flex flex-col lg:w-1/3 items-center py-5 mb-20  shadow-xl rounded-xl px-9 ${localStorage.getItem("1") != null ? "bg-black ":"bg-white bg-white shadow-lg opacity-95 shadow-white"}`}>
      <Modal2/>
       <SubTitulo titulo = "Nombre Cliente"/>
       <SeleccionarCliente setCliente = {setcliente} cliente={cliente}/>
